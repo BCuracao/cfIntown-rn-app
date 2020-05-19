@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, requireNativeComponent } from "react-native";
+import { NavigationNativeContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "./components/LoginScreen";
+import Navigator from "./routes/homeStack";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  return <LoginScreen></LoginScreen>;
+  return <Navigator />;
 }
 
 const styles = StyleSheet.create({

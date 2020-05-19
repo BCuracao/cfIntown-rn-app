@@ -9,6 +9,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   TouchableOpacity,
+  Button,
 } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
@@ -16,7 +17,7 @@ import image from "../images/login_background.png";
 
 const { width: WIDTH } = Dimensions.get("window");
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -25,7 +26,6 @@ const LoginScreen = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.contentContainer}>
           <Image source={image} style={styles.imageContainer}></Image>
-
           <View style={styles.inputContainer}>
             <Icon
               style={styles.inputIcon}
@@ -41,28 +41,12 @@ const LoginScreen = () => {
             />
           </View>
           <View style={styles.inputContainer}>
-            <Icon
-              style={styles.inputIcon}
-              name={"ios-lock"}
-              size={26}
-              color={"rgba(0,0,0,0.35)"}
-            />
-
-            <TouchableOpacity>
-              <Icon
-                style={styles.eyeIcon}
-                name={"ios-eye"}
-                size={26}
-                color={"rgba(0,0,0,0.35)"}
-              />
-            </TouchableOpacity>
-            <TextInput
-              style={styles.input}
-              placeholder={"Password"}
-              secureTextEntry={true}
-              placeholderTextColor={"rgba(255, 255, 255, 0.7)"}
+            <Button
+              style={styles.loginBtn}
+              title="LOGIN"
               underlineColorAndroid="transparent"
-            />
+              onPress={() => navigation.navigate("LandingScreen")}
+            ></Button>
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -107,6 +91,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 12,
     right: 10,
+  },
+  loginBtn: {
+    width: WIDTH - 45,
+    height: 55,
+    borderRadius: 25,
+    fontSize: 20,
+    backgroundColor: "rgba(0,0,0,0.25)",
+    color: "rgba(255,255,255,0.7)",
   },
 });
 
