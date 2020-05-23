@@ -3,7 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "../components/LoginScreen";
-import LandingScreen from "../components/LandingScreen";
+import { LandingScreenTabNavigator } from "../components/LandingScreen";
+import WelcomeScreen from "../components/WelcomeScreen";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +16,11 @@ export default Navigator = () => {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="LandingScreen" component={LandingScreen} />
+        <Stack.Screen
+          name="LandingScreen"
+          component={LandingScreenTabNavigator}
+        />
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
