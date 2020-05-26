@@ -2,7 +2,7 @@ import React, { useState, Component, useEffect } from "react";
 import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 
 const WelcomeScreen = ({ route, navigation }) => {
-  const { userName } = route.params;
+  const { enteredName } = route.params;
 
   useEffect(() => {
     window.setTimeout(() => {
@@ -12,18 +12,14 @@ const WelcomeScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require("../images/login_background.png")}
-          style={styles.logo}
-          resizeMode="stretch"
-        />
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.greeting}>
-          Hi, {JSON.stringify(userName).slice(1, -1)}
-        </Text>
-      </View>
+      <Image
+        source={require("../images/login_background.png")}
+        style={styles.logo}
+        resizeMode="stretch"
+      />
+      <Text style={styles.greeting}>
+        Hi, {JSON.stringify(enteredName).slice(1, -1)}
+      </Text>
     </View>
   );
 };
@@ -34,7 +30,9 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(255,204,0,0.65)",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(255,204,0,0.45)",
   },
   header: {
     flex: 3,
@@ -56,9 +54,11 @@ const styles = StyleSheet.create({
     height: height_logo,
   },
   greeting: {
-    fontSize: 40,
-    color: "#666666",
+    marginTop: 30,
+    fontSize: 60,
+    color: "#fff",
     fontFamily: "System",
+    fontWeight: "bold",
   },
 });
 
